@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Outfit, Space_Grotesk } from "next/font/google";
 import "./globals.css";
+import Navbar from "./components/Navbar";
 
 const geistOutfit = Outfit({
   variable: "--font-Outfit",
@@ -24,7 +25,9 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
       className={`${geistOutfit.variable} ${geistGrotesk.variable} h-full antialiased`}
     >
       <body className="min-h-full flex flex-col">
-        
+
+        <Navbar/>
+
         {children}
 
         </body>
