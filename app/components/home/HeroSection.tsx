@@ -6,7 +6,7 @@ import Banner from "@/app/assets/images/banner.png"
 const HeroSection = ()=> {
 
     return (
-        <section className="container mx-auto px-4 py-8 sm:px-6 sm:py-12 lg:px-8 lg:py-10">
+        <section className="container mx-auto px-4 py-8 sm:py-10 lg:py-12">
             <div className="mx-auto max-w-350">
                 <div className="relative overflow-hidden rounded-2xl border border-white/9 bg-card">
                     {/* Decorative Grid */}
@@ -41,10 +41,8 @@ const HeroSection = ()=> {
                                 up.
                             </p>
 
-                            <a
-                                href="#workouts"
-                                className="mt-8 inline-flex items-center gap-3 bg-primary px-6 py-4 text-sm font-black uppercase tracking-wide text-black transition hover:bg-[#d4ff3d]"
-                            >
+                            <a href="#workouts"
+                                className="mt-8 inline-flex items-center gap-3 bg-primary px-6 py-4 text-sm font-black uppercase tracking-wide text-black transition hover:bg-[#d4ff3d]">
                                 Browse Workouts
                                 <ChevronRight size={18} />
                             </a>

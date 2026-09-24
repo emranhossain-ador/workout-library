@@ -10,7 +10,7 @@ const Navbar = ()=> {
     return (
 
         <header className="border-b border-white/8">
-            <div className="mx-auto flex h-19 container items-center justify-between px-5 sm:px-8 lg:px-10">
+            <div className="mx-auto flex h-19 container items-center justify-between px-4">
                 
                 {/* Logo */}
                 <Link href="#" className="flex items-center gap-3">
