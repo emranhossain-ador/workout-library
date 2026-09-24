@@ -18,4 +18,11 @@
     color: var(--color-foreground);
     font-family: var(--font-outfit);
   }
+
+  @media (min-width: 80rem) {
+    .container {
+        max-width: 80rem !important;
+    }
+}
+
 }

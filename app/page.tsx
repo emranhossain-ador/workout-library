@@ -1,11 +1,15 @@
+import HeroSection from "./components/home/HeroSection";
 
 
 export default function Home() {
 
   return (
     
-    <main className="">
-      <h4>Hello</h4>
+    <main>
+      
+      {/* Hero Section */}
+      <HeroSection/>
+      
     </main>
 
   );
