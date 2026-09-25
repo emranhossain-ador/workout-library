@@ -3,37 +3,48 @@
 import { useContext, useState } from "react";
 import PlansCalculate from "./PlansCalculate";
 import SavePlansCard from "./SavePlansCard";
-import { ChevronDown } from "lucide-react";
 import { ExerciseContext } from "../providers/exerciseProvider";
-import { ExerciseType } from "../type/exerciseType";
 import Link from "next/link";
 
 const MyPlanClient = ()=>
 {
-
     const context = useContext(ExerciseContext);
-
     if(!context){
         throw new Error("Context data not found!");
     }
+    
+    const {myPlans, savePlans} = context;
 
-    const [tap, setTap] = useState<string>('todayPlans');
+    const [tap, setTap] = useState<"todayPlans"|"saved">('todayPlans');
+    const [sortBy, setSortBy] = useState<"duration" | "calories" | "rating">('duration');
 
-    const handleTap = (value:string)=>
+    const handleTap = (value: "todayPlans"|"saved")=>
     {
         setTap(value)
     }
 
-    const {myPlans, savePlans} = context;
 
-    const selectExercise = tap === "todayPlans" ? myPlans : savePlans;
+    const sortExercise = ()=>{
+        const tabSelectPlan = tap === "todayPlans" ? myPlans : savePlans;
 
-    // console.log(selectExercise);
+        const exercise = [...tabSelectPlan];
 
+        if(sortBy === "duration"){
+            exercise.sort((a,b)=> b.duration - a.duration);
+        }else if(sortBy === 'calories'){
+            exercise.sort((a,b)=> b.caloriesBurned - a.caloriesBurned);
+        }else if(sortBy === 'rating'){
+            exercise.sort((a,b) => b.rating - a.rating);
+        }
+
+        return exercise;
+    }
+
+    const selectExercise = sortExercise();
 
     return (
         <>
-            <PlansCalculate/>
+            <PlansCalculate exercise={selectExercise}/>
 
             <div className="mt-6 flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
 
@@ -48,16 +59,16 @@ const MyPlanClient = ()=>
                         Saved
                     </button>
                 </div>
-
-                <div className="flex items-center gap-2">
-                    <span className="text-[10px] text-gray-500">
-                        Sort By
-                    </span>
-
-                    <button className="flex items-center gap-2 rounded-lg border border-[#242832] bg-[#15171c] px-3 py-2 text-[11px] text-gray-300">
-                        Duration
-                        <ChevronDown size={13} />
-                    </button>
+                <div className="w-full max-w-xs">
+                    <h5 className="text-foreground/90">Sort By</h5>
+                    <select 
+                        value={sortBy}
+                        onChange={(e)=>setSortBy(e.target.value as "duration" | "calories" | "rating")}
+                        className="select text-base min-h-12 rounded-2xl w-full max-w-xs">
+                        <option value={"duration"}>Duration</option>
+                        <option value={"calories"}>Calories</option>
+                        <option value={"rating"}>Rating</option>
+                    </select>
                 </div>
 
             </div>
@@ -67,7 +78,7 @@ const MyPlanClient = ()=>
                     selectExercise.length === 0 ?
                     isEmpty()
                         :
-                    selectExercise.map((plan)=><SavePlansCard key={plan.id} exercise={plan}/>)
+                    selectExercise.map((plan)=><SavePlansCard selectedTap={tap} key={plan.id} exercise={plan}/>)
                 }
                 
             </div>

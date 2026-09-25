@@ -1,16 +1,19 @@
 import { Check,
     Clock3,
     Flame,
-    Star,
-    X, } from "lucide-react";
+    Star} from "lucide-react";
+
 import { ExerciseType } from "../type/exerciseType";
 import Image from "next/image";
+import Link from "next/link";
+import SavePlanDeleteButton from "./ui/SavePlanDeleteButton";
 
 interface SavePlansCardProps {
-    exercise: ExerciseType
+    exercise: ExerciseType;
+    selectedTap: string
 }
 
-const SavePlansCard = ({exercise}:SavePlansCardProps)=> {
+const SavePlansCard = ({exercise, selectedTap}:SavePlansCardProps)=> {
     
     return (
         <div className="rounded-xl border border-[#242832] bg-[#15171c] p-3 sm:p-4">
@@ -61,18 +64,17 @@ const SavePlansCard = ({exercise}:SavePlansCardProps)=> {
                 {/* Actions */}
                 <div className="flex items-center justify-between gap-2 lg:justify-end">
 
-                    <button className="rounded-full border border-[#303640] px-4 py-2 text-[10px] font-medium text-gray-300 transition hover:border-gray-500 hover:text-white">
-                    View Details
+                    <Link href={`/exercise/${exercise.id}`} 
+                        className="rounded-full border border-[#303640] px-4 py-2 text-sm font-medium text-gray-300 transition hover:border-gray-500 hover:text-white">
+                        View Details
+                    </Link>
+
+                    <button className="flex items-center gap-1.5 rounded-full bg-primary px-4 py-2 text-sm font-black text-black transition hover:bg-[#d5ff40]">
+                        <Check size={12} strokeWidth={4} />
+                        Mark as Done
                     </button>
 
-                    <button className="flex items-center gap-1.5 rounded-full bg-[#c6ff00] px-4 py-2 text-[10px] font-black text-black transition hover:bg-[#d5ff40]">
-                    <Check size={12} strokeWidth={3} />
-                    Mark as Done
-                    </button>
-
-                    <button className="flex h-8 w-8 items-center justify-center text-gray-600 transition hover:text-white">
-                    <X size={15} />
-                    </button>
+                    <SavePlanDeleteButton selectedTap={selectedTap} planid={exercise.id}/>
 
                 </div>
 
