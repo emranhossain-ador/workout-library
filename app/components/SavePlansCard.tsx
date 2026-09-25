@@ -19,10 +19,10 @@ const SavePlansCard = ({exercise, selectedTap}:SavePlansCardProps)=> {
     return (
         <div className="rounded-xl border border-[#242832] bg-[#15171c] p-3 sm:p-4">
 
-            <div className="flex flex-col gap-4 lg:flex-row lg:items-center">
+            <div className="flex flex-col gap-4 md:flex-row md:items-center">
 
                 {/* Image + Information */}
-                <div className="flex min-w-0 flex-1 items-center gap-3">
+                <div className="flex min-w-0 flex-1 md:items-center gap-3 flex-col md:flex-row items-start">
 
                     {/* Image */}
                     <div className="relative h-28 w-full shrink-0 overflow-hidden rounded-2xl sm:h-24 sm:w-36 bg-[#22252c]">
@@ -63,7 +63,7 @@ const SavePlansCard = ({exercise, selectedTap}:SavePlansCardProps)=> {
                 </div>
 
                 {/* Actions */}
-                <div className="flex items-center justify-between gap-2 lg:justify-end">
+                <div className="flex items-center md:justify-between gap-2 lg:justify-end">
 
                     <Link href={`/exercise/${exercise.id}`} 
                         className="rounded-full border border-[#303640] px-4 py-2 text-sm font-medium text-gray-300 transition hover:border-gray-500 hover:text-white">

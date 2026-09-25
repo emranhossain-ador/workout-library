@@ -64,7 +64,7 @@ const MyPlanClient = ()=>
                     <select 
                         value={sortBy}
                         onChange={(e)=>setSortBy(e.target.value as "duration" | "calories" | "rating")}
-                        className="select text-base min-h-12 rounded-2xl w-full max-w-xs">
+                        className="select text-base border-border bg-background min-h-12 rounded-2xl w-full max-w-xs">
                         <option value={"duration"}>Duration</option>
                         <option value={"calories"}>Calories</option>
                         <option value={"rating"}>Rating</option>
