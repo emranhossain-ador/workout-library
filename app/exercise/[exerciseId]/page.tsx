@@ -1,4 +1,6 @@
-import { Bookmark, CalendarPlus } from "lucide-react";
+import SavePlanButton from "@/app/components/ui/SavePlanButton";
+import TodayPlanButton from "@/app/components/ui/TodayPlanButton";
+import { Metadata } from "next";
 import Image from "next/image";
 
 interface WorkoutProps{
@@ -6,6 +8,11 @@ interface WorkoutProps{
     exerciseId: string
   }>
 }
+
+export const metadata: Metadata = {
+  title: "Exercise Details",
+  description: "Exercise Details",
+};
 
 const WorkoutDetailsPage = async({params}:WorkoutProps) => {
 
@@ -19,8 +26,8 @@ const WorkoutDetailsPage = async({params}:WorkoutProps) => {
     { label:"Difficulty", value: exercise.difficulty },
     { label:"Sets", value: exercise.sets },
     { label:"Reps", value: exercise.reps },
-    { label:"Duration", value: exercise.duration },
-    { label:"Calories", value: exercise.calories },
+    { label:"Duration", value: `${exercise.duration} min` },
+    { label:"Calories", value: `${exercise.caloriesBurned} kcal` },
     { label:"Rating", value: exercise.rating },
   ]
   
@@ -44,17 +51,14 @@ const WorkoutDetailsPage = async({params}:WorkoutProps) => {
 
           {/* ================= RIGHT CONTENT ================= */}
           <div className="min-w-0">
-
             {/* Title */}
             <h1 className="text-3xl font-black uppercase leading-none tracking-tight sm:text-4xl lg:text-[32px]">
               {exercise.name}
             </h1>
-
             {/* Description */}
             <p className="mt-3 max-w-2xl text-sm leading-5 text-gray-400 sm:text-[15px]">
               {exercise.description}
             </p>
-
             {/* Tags */}
             <div className="mt-4 flex flex-wrap gap-2">
               {
@@ -76,7 +80,7 @@ const WorkoutDetailsPage = async({params}:WorkoutProps) => {
                       {info.label}
                     </span>
 
-                    <span className="font-header text-sm font-bold">
+                    <span className="font-header text-sm font-semibold">
                       {info.value}
                     </span>
                   </div>
@@ -109,15 +113,9 @@ const WorkoutDetailsPage = async({params}:WorkoutProps) => {
             {/* ================= BUTTONS ================= */}
             <div className="mt-7 flex flex-col gap-3 sm:flex-row">
 
-              <button className="inline-flex py-3 items-center justify-center gap-2 rounded-lg bg-primary px-5 text-sm font-black text-black transition hover:bg-[#d4ff3d] cursor-pointer font-header">
-                <CalendarPlus size={15} />
-                Add to today's plan
-              </button>
+              <TodayPlanButton exercise={exercise} />
 
-              <button className="inline-flex py-3 items-center justify-center gap-2 rounded-lg border border-[#303641] px-5 text-sm font-header font-medium text-gray-300 transition hover:border-gray-500 hover:text-white cursor-pointer">
-                <Bookmark size={15} />
-                Save for later
-              </button>
+              <SavePlanButton exercise={exercise} />
 
             </div>
 

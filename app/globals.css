@@ -5,11 +5,11 @@
   --font-outfit: var(--font-Outfit);
   --font-header: var(--font-Space-grotesk);
 
-  --color-background: #000000;
+  --color-background: #0f1115;
   --color-foreground: #fff;
   --color-primary: #c6ff00;
-  --color-card: #222630;
-  --color-border: #353c47;
+  --color-card: #1a1d23;
+  --color-border: #252830;
 }
 
 @layer components{

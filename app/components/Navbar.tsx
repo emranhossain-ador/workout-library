@@ -2,9 +2,18 @@
 import { Dumbbell, Menu, X } from "lucide-react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { useState } from "react";
+import { useContext, useState } from "react";
+import { ExerciseContext } from "../providers/exerciseProvider";
 
 const Navbar = ()=> {
+
+    const context = useContext(ExerciseContext);
+
+    if (!context) {
+        return null;
+    }
+
+    const { myPlans, savePlans } = context;
     
     const [menuOpen, setMenuOpen] = useState(false);
     const pathName = usePathname();
@@ -22,8 +31,8 @@ const Navbar = ()=> {
 
     return (
 
-        <header className="border-b border-white/8">
-            <div className="mx-auto flex h-19 container items-center justify-between px-4">
+        <header className="border-b border-white/8 sticky top-0 bg-black z-50">
+            <div className="mx-auto flex h-16 container items-center justify-between px-4">
                 
                 {/* Logo */}
                 <Link href="/" className="flex items-center gap-3">
@@ -48,14 +57,14 @@ const Navbar = ()=> {
                     <Link href="/my-plans" className="flex items-center gap-2 text-sm text-foreground">
                         Plan
                         <span className="flex h-6 min-w-6 items-center justify-center rounded-full bg-primary px-2 font-bold text-black">
-                        0
+                            {myPlans.length}
                         </span>
                     </Link>
 
                     <Link href="/my-plans" className="flex items-center gap-2 text-sm text-foreground">
                         Saved
                         <span className="flex h-6 min-w-6 items-center justify-center rounded-full border border-white/20 px-2 text-gray-300">
-                        0
+                            {savePlans.length}
                         </span>
                     </Link>
                 </div>
@@ -79,14 +88,14 @@ const Navbar = ()=> {
                         <Link href="/my-plans" onClick={() => setMenuOpen(false)} className="mt-3 flex items-center justify-between border-t border-white/10 pt-4 text-sm">
                             <span className="text-foreground">Plan</span>
                             <span className="flex h-6 w-6 items-center justify-center rounded-full bg-primary text-xs font-bold text-black">
-                                0
+                                {myPlans.length}
                             </span>
                         </Link>
 
                         <Link href="/my-plans" onClick={() => setMenuOpen(false)} className="flex items-center justify-between text-sm">
                             <span className="text-foreground">Saved</span>
                             <span className="flex h-6 w-6 items-center justify-center rounded-full border border-white/20 text-xs">
-                                0
+                                {savePlans.length}
                             </span>
                         </Link>
                     </nav>
