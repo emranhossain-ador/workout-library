@@ -18,7 +18,7 @@ const LibrarySection = async()=> {
 
     
     return (
-        <section className="container mx-auto px-4 py-10">
+        <section id="library" className="container mx-auto px-4 py-10">
            <SectionTitle title="THE LIBRARY" subtitle="Twelve lifts covering every major muscle group." />
 
             {/* Cards Grid */}

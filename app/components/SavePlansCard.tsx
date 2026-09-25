@@ -7,6 +7,7 @@ import { ExerciseType } from "../type/exerciseType";
 import Image from "next/image";
 import Link from "next/link";
 import SavePlanDeleteButton from "./ui/SavePlanDeleteButton";
+import MarkAsDoneButton from "./ui/MarkAsDoneButton";
 
 interface SavePlansCardProps {
     exercise: ExerciseType;
@@ -69,10 +70,7 @@ const SavePlansCard = ({exercise, selectedTap}:SavePlansCardProps)=> {
                         View Details
                     </Link>
 
-                    <button className="flex items-center gap-1.5 rounded-full bg-primary px-4 py-2 text-sm font-black text-black transition hover:bg-[#d5ff40]">
-                        <Check size={12} strokeWidth={4} />
-                        Mark as Done
-                    </button>
+                    <MarkAsDoneButton selectedTap={selectedTap} planid={exercise.id}/>
 
                     <SavePlanDeleteButton selectedTap={selectedTap} planid={exercise.id}/>
 

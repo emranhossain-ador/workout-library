@@ -4,6 +4,7 @@ import "./globals.css";
 import Navbar from "./components/Navbar";
 import ExerciseProvider from "./providers/exerciseProvider";
 import { Slide, ToastContainer } from "react-toastify";
+import FooterSection from "./components/FooterSection";
 
 const geistOutfit = Outfit({
   variable: "--font-Outfit",
@@ -24,7 +25,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
     <html
       lang="en"
-      className={`${geistOutfit.variable} ${geistGrotesk.variable} h-full antialiased`}
+      className={`${geistOutfit.variable} ${geistGrotesk.variable} h-full antialiased scroll-smooth`}
     >
       <body className="min-h-full flex flex-col">
 
@@ -46,6 +47,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
 
           <Navbar/>
           {children}
+          <FooterSection/>
 
         </ExerciseProvider>
 

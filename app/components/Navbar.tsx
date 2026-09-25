@@ -4,6 +4,8 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useContext, useState } from "react";
 import { ExerciseContext } from "../providers/exerciseProvider";
+import Logo from "@/app/assets/images/logo.png";
+import Image from "next/image";
 
 const Navbar = ()=> {
 
@@ -36,8 +38,8 @@ const Navbar = ()=> {
                 
                 {/* Logo */}
                 <Link href="/" className="flex items-center gap-3">
-                    <div className="flex h-9 w-9 items-center justify-center bg-primary text-black">
-                        <Dumbbell size={20} strokeWidth={2.5} />
+                    <div className="flex h-6 w-6 items-center justify-center">
+                        <Image src={Logo} width={300} height={300} className="w-full h-full object-cover" alt="logo" />
                     </div>
 
                     <span className="text-xl font-black tracking-tight">

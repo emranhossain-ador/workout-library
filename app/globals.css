@@ -27,6 +27,7 @@
     color: #c6ff00 !important;
   }
 
+
   @media (min-width: 80rem) {
     .container {
         max-width: 80rem !important;

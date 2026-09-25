@@ -41,7 +41,7 @@ const HeroSection = ()=> {
                                 up.
                             </p>
 
-                            <a href="#workouts"
+                            <a href="#library"
                                 className="mt-8 inline-flex items-center gap-3 bg-primary px-6 py-4 text-sm font-black uppercase tracking-wide text-black transition hover:bg-[#d4ff3d]">
                                 Browse Workouts
                                 <ChevronRight size={18} />
